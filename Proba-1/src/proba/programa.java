@@ -17,7 +17,7 @@ public class programa {
 		}else if(res>8&& res<=8) {
 			System.out.println("El resultat es 8");
 		}else {
-			System.out.println("No valid");
+			System.out.println("Resultat no valid");
 		}
 		
 		
