@@ -2,17 +2,27 @@ package file;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class file1 {
 
 	public static void main(String[] args) {
-		File f1= new File("FEDERICO1.txt");
-		File f2= new File("A:\\Estudis\\DAM-2\\Acces_a_Dades\\UF1\\M6\\file","FEDERICO2.txt");
-		File ruta= new File("A:\\Estudis\\DAM-2\\Acces_a_Dades\\UF1\\M6\\file");
+		File ruta= new File("A:\\Estudis\\DAM-2");
 		File f4 = new File(ruta,"FEDERICO3.txt");
-
+		String[] llista= ruta.list();
 		
-		try {
+		ArrayList<File> llistafile = new ArrayList();
+		for(String a:llista) {
+			File b= new File(ruta,a);
+			llistafile.add(b);
+		}
+		for(File c:llistafile) {
+			if(c.isDirectory()) {
+			System.out.println(c.getName()+" Es n directori");
+			}
+		}
+
+		/*try {
 			if(f1.exists()) {
 			System.out.println( "EXISTEIX.");
 			System.out.println(f2.getName());
@@ -42,7 +52,10 @@ public class file1 {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		
+		
+		
 		
 		
 		
