@@ -3,6 +3,7 @@ package file;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class file1 {
 
@@ -17,8 +18,14 @@ public class file1 {
 			llistafile.add(b);
 		}
 		for(File c:llistafile) {
+			//libreria calendar(pasar milisegundos a fecha)
+			Calendar calendar= Calendar.getInstance();
+			calendar.setTimeInMillis(c.lastModified());
+			int year =calendar.get(Calendar.YEAR);
+			
+			
 			if(c.isDirectory()) {
-			System.out.println(c.getName()+" Es n directori");
+			System.out.println(c.getName()+" Es n directori "+"de tamany "+c.length()+" Bytes "+" "+calendar.getTime());
 			}
 		}
 
