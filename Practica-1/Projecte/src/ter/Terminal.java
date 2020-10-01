@@ -1,5 +1,6 @@
 package ter;
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,17 +9,40 @@ public class Terminal {
 	public static void main(String[] args) {
 		Scanner lector= new Scanner(System.in);
 		String usuari="";
-		
+		File starto = new File("C:\\Users\\JoseM Toribio Bravo");
 		do {
-			File starto = new File("C:\\Users\\JoseM Toribio Bravo");
+			
 			System.out.print(starto+">");
-		usuari= lector.next();
+		usuari = lector.nextLine();
 		
 		
-		if(usuari.equals("cd")) {
+		
+		if(usuari.contains("cd")) {
+			//String[] us1 = usuari.split(" ");
+			String us1= usuari.substring(usuari.indexOf(" ")+1,usuari.length());
+			
+			
+			/*for(int i=1;i<us1.length;i++) {
+				 us2= us2+us1[i];
+				
+			}
+			*/
+			File us2= new File(us1);
+			starto= us2;
+			
+			
 			
 		}
-		if(usuari.equals("mkdir")) {
+		if(usuari.contains("mkdir")) {
+			String us1= usuari.substring(usuari.indexOf(" ")+1,usuari.length());
+			File us2= new File (starto+"/"+us1);			
+
+				if(!us2.exists()) {
+					if(us2.mkdir()) {
+					}
+				}
+			
+			
 			
 		}
 		if(usuari.equals("dir")) {
@@ -46,14 +70,38 @@ public class Terminal {
 		}
 		
 		}
-		if(usuari.equals("rename")) {
+		if(usuari.contains("del")) {
+			String us1= usuari.substring(usuari.indexOf(" ")+1,usuari.length());
+			File us2= new File (starto+"/"+us1);
+				if(us2.exists()) {
+					if(us2.delete()) {
+
+					
+					}
+				}
+		}
+		if(usuari.contains("rename")) {
+			String us1= usuari.substring(usuari.indexOf(" ")+1,usuari.length());
+			String us2 = us1.substring(us1.indexOf(" ")+1,us1.length());
+			String[] us1_1 = usuari.split(" ");
+			String us1_2 = us1_1[1];
+			File us1_3= new File(starto+"/"+us1_2);
+			File us3= new File(us2);
+			File us4= new File (starto+"/"+us3);
 			
+			
+				if(us1_3.exists()) {
+					us1_3.renameTo(us4);
+						
+					
+					
+				}
 		}
 		
 			
 			
 			
-			System.out.println(usuari);
+			
 			
 		}while(!usuari.equals("exit"));
 
