@@ -53,10 +53,11 @@ public class Terminal {
 			File b = new File(starto,a);
 			dir.add(b);
 		}
+		int TT=0;
 		for(File c: dir) {
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(c.lastModified());
-			
+		
 			int Year =calendar.get(Calendar.YEAR);
 			int Month =calendar.get(Calendar.MONTH);
 			int Day =calendar.get(Calendar.DAY_OF_MONTH);
@@ -64,10 +65,15 @@ public class Terminal {
 			int Minut =calendar.get(Calendar.MINUTE);
 			
 			if(c.isDirectory()) {
-				System.out.println(Day+"/"+Month+"/"+Year+"  "+Hour+":"+Minut+"   "+"<DIR>   "+c.getName());
+				System.out.println(Day+"/"+Month+"/"+Year+"  "+Hour+":"+Minut+"   "+" <DIR>   "+c.getName());
+				TT= (int) (TT+c.length());
+			}else if(c.isFile()) {
+				System.out.println(Day+"/"+Month+"/"+Year+"  "+Hour+":"+Minut+"   "+"		  "+c.getName());
+				TT= (int) (TT+c.length());
 			}
 			
 		}
+		System.out.println("						"+llista.length +" archius "+TT+" bytes");
 		
 		}
 		if(usuari.contains("del")) {
