@@ -14,10 +14,11 @@ public class Terminal {
 			
 			System.out.print(starto+">");
 		usuari = lector.nextLine();
+		String[] us0 = usuari.split(" ");
 		
 		
 		
-		if(usuari.contains("cd")) {
+		if(us0[0].equals("cd")) {
 			//String[] us1 = usuari.split(" ");
 			String us1= usuari.substring(usuari.indexOf(" ")+1,usuari.length());
 			
@@ -33,7 +34,7 @@ public class Terminal {
 			
 			
 		}
-		if(usuari.contains("mkdir")) {
+		if(us0[0].equals("mkdir")) {
 			String us1= usuari.substring(usuari.indexOf(" ")+1,usuari.length());
 			File us2= new File (starto+"/"+us1);			
 
@@ -45,7 +46,7 @@ public class Terminal {
 			
 			
 		}
-		if(usuari.equals("dir")) {
+		if(us0[0].equals("dir")) {
 		String[]llista = starto.list();
 		ArrayList<File>dir= new ArrayList();
 		
@@ -76,7 +77,7 @@ public class Terminal {
 		System.out.println("						"+llista.length +" archius "+TT+" bytes");
 		
 		}
-		if(usuari.contains("del")) {
+		if(us0[0].equals("del")) {
 			String us1= usuari.substring(usuari.indexOf(" ")+1,usuari.length());
 			File us2= new File (starto+"/"+us1);
 				if(us2.exists()) {
@@ -86,7 +87,7 @@ public class Terminal {
 					}
 				}
 		}
-		if(usuari.contains("rename")) {
+		if(us0[0].equals("rename")) {
 			String us1= usuari.substring(usuari.indexOf(" ")+1,usuari.length());
 			String us2 = us1.substring(us1.indexOf(" ")+1,us1.length());
 			String[] us1_1 = usuari.split(" ");
