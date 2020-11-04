@@ -22,16 +22,19 @@ public class Exercici2 {
 			
 			
 			FileWriter fw= new FileWriter("A:\\Estudis\\DAM-2\\Acces_a_Dades\\UF1\\M6\\Examen_1\\Cargol.txt");
-			if(text.contains("bover")) {
+			if(text.equals("bover")) {
 				text=text.replaceAll("bover,","revob");
 				}
-				if(text.contains("també ")) {
+				if(text.equals("també ")) {
 				text=text.replaceAll("també ","ebmat");
+				}
+				if(text.equals("treu")) {
+					text=text.replaceAll("treu","uert");
 				}
 			fw.write(text);
 			fw.close();
 			
-			
+			System.out.println(text);
 			
 		
 		} catch (Exception e) {
