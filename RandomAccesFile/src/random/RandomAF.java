@@ -13,7 +13,7 @@ public class RandomAF {
 	        int numero;
 	        try {
 	            //se abre el fichero para lectura y escritura
-	            fichero = new RandomAccessFile("ficheros\\enteros.dat", "rw");
+	            fichero = new RandomAccessFile("enteros.dat", "rw");
 	            mostrarFichero(); //muestra el contenido original del fichero
 	            System.out.print("Introduce un número entero para añadir al final del fichero: ");                    
 	            numero = sc.nextInt(); //se lee el entero a añadir en el fichero
