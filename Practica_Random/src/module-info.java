@@ -1,0 +1,2 @@
+module Practica_Random {
+}
