@@ -19,9 +19,10 @@ public class File_Input_Main {
 		File a = new File("productes.dat");
 		
 		try {
+			//si no existe el fichero crearemos el array
 			if(!a.exists()) {
 				ArrayList<producte>llistap= new ArrayList<>();
-				
+				//entraremos en el bucle
 			     do {
 						System.out.println("----------------------------------------------");
 						System.out.println("Que desitja fer:");
@@ -37,7 +38,7 @@ public class File_Input_Main {
 						
 						
 				
-						
+						//insertaremos datos en el objeto a traves del array de objetos
 						if(usuari.equals("introduir un producte")) {
 							
 							
@@ -56,6 +57,7 @@ public class File_Input_Main {
 						
 							
 						}
+						//mostraremos los precios de array de objetos(buscando uno en concreto)
 						if(usuari.equals("mostrar el preu")) {
 							System.out.println("¿De quin producte vols saber el preu?");
 							String up=scan.nextLine();
@@ -66,6 +68,7 @@ public class File_Input_Main {
 							}
 
 						}
+						//modificaremos los precios del array de objetos(buscando uno en concreto)
 						if(usuari.equals("modificar el preu")) {
 							System.out.println("¿De quin producte vols modificar el preu?");
 							String up=scan.nextLine();
@@ -82,6 +85,7 @@ public class File_Input_Main {
 
 							
 						}
+						//mostraremos todos los productos
 						if(usuari.equals("mostrar els productes")) {
 
 							for(producte b: llistap) {
@@ -92,7 +96,7 @@ public class File_Input_Main {
 						}
 					
 					    
-						
+						//borraremos un producto en concreto
 						if(usuari.equals("esborrar un producte")) {
 							System.out.println("¿Quin producte es vol eliminar?");
 							String up=scan.nextLine();
@@ -101,22 +105,24 @@ public class File_Input_Main {
 								if(b.getNom().equals(up)) {
 									llistap.remove(b);	
 								System.out.println("¡Producte eliminat!");
-								break;
+								break;//break para finalizar el bucle
 								}
 								
 							}
 							
 						}
 						
-						
+						//crearemos el objeto (en la carpeta de proyecto(en este caso))
 						FileOutputStream fos1 = new FileOutputStream ("productes.dat");
 					     ObjectOutputStream oos1 = new ObjectOutputStream(fos1); 
-					     for (int i = 0; i <llistap.size(); i++) { 
+					     for (int i = 0; i <llistap.size(); i++) {
+					    	 //realizamor la ejecucion de escribir(pero sin escribir nada realmente)||Esto nos permite crear el fichero||si no escribe no lo crea
 					     oos1.writeObject(llistap.get(i)); 
 					     }
 					     oos1.close();
 					     fos1.close();
-					     
+					     //crreamos los comandos
+					     //escribimos realmente los datos del objeto en el fichero
 							FileInputStream fis = new FileInputStream("productes.dat");
 							ObjectInputStream ois=new ObjectInputStream(fis);
 							while(fis.available()!=0) {
@@ -125,12 +131,14 @@ public class File_Input_Main {
 							}
 						    ois.close();
 						    fis.close();
+						    //cerramos los comandos
 					  
 					}while(!usuari.equals("sortir"));
 			}else {
 				
-
+				//si existe
 			     do {
+			    	//entraremos en el bucle
 						System.out.println("----------------------------------------------");
 						System.out.println("Que desitja fer:");
 						System.out.println("----------------------------------------------");
@@ -143,17 +151,19 @@ public class File_Input_Main {
 						System.out.println("----------------------------------------------");
 						usuari=scan.nextLine();
 						
-						
+						//recorremos el fichero para  añadir al array de objetos los datos de los objetos existentes en el fichero
 						FileInputStream fis = new FileInputStream("productes.dat");
 						ObjectInputStream ois=new ObjectInputStream(fis);
 						ArrayList<producte>llistap= new ArrayList<>();
 						while(fis.available()!=0) {
 							producte p=(producte)ois.readObject();
 							llistap.add(p);
+							//los añadimos al arraylist
 						}
 					    ois.close();
 					    fis.close();
-						
+					    
+					  //insertaremos datos en el objeto a traves del array de objetos
 						if(usuari.equals("introduir un producte")) {
 							
 							
@@ -172,6 +182,7 @@ public class File_Input_Main {
 						
 							
 						}
+						//mosrtar el precio de un producto en concreto
 						if(usuari.equals("mostrar el preu")) {
 							System.out.println("¿De quin producte vols saber el preu?");
 							String up=scan.nextLine();
@@ -182,6 +193,7 @@ public class File_Input_Main {
 							}
 
 						}
+						//modificamos el precio e un producto en concreto
 						if(usuari.equals("modificar el preu")) {
 							System.out.println("¿De quin producte vols modificar el preu?");
 							String up=scan.nextLine();
@@ -198,6 +210,7 @@ public class File_Input_Main {
 
 							
 						}
+						//mostramos todos los productos
 						if(usuari.equals("mostrar els productes")) {
 
 							for(producte b: llistap) {
@@ -208,7 +221,7 @@ public class File_Input_Main {
 						}
 					
 					    
-						
+						//borramos un producto en concreto
 						if(usuari.equals("esborrar un producte")) {
 							System.out.println("¿Quin producte es vol eliminar?");
 							String up=scan.nextLine();
@@ -217,13 +230,13 @@ public class File_Input_Main {
 								if(b.getNom().equals(up)) {
 									llistap.remove(b);	
 								System.out.println("¡Producte eliminat!");
-								break;
+								break;//break para finalizar el bucle y evitar que pete
 								}
 								
 							}
 							
 						}
-						
+						//escribimos en el fichero los objetos del array de objetos
 						FileOutputStream fos = new FileOutputStream ("productes.dat");
 					    ObjectOutputStream oos = new ObjectOutputStream(fos);
 					    for (producte per : llistap) {

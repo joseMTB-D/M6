@@ -1,4 +1,4 @@
-package fi;
+package Exercicis;
 
 import java.io.Serializable;
 

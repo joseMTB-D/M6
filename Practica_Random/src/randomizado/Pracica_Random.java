@@ -11,9 +11,11 @@ public class Pracica_Random {
 		Scanner scan= new Scanner(System.in);
 		int numero;
 	try {
+		//fichero con 10 numeros
 		fichero=new RandomAccessFile("Binarios.dat","rw");
-		mostrarFichero();
 		
+		
+		//asi inserte los 10 numeros
 	/*	for (int i = 0; i < 10; i++) {
 			System.out.print("numero "+(i+1)+" >");
 			numero=scan.nextInt();
@@ -42,24 +44,5 @@ public class Pracica_Random {
 		
 
 	}
-	public static void mostrarFichero() {
-		 int n;
-	        try {
-	            fichero.seek(0); //nos situamos al principio
-	            while (true) {
-	            	int i=0;
-	            	i+=2;
-	            	n = fichero.readInt();  //se lee  un entero del fichero   
-	            	if(i==2) {      
-	            	n = fichero.readInt();  //se lee  un entero del fichero   
-	                System.out.print(n+" ");  //se muestra en pantalla
-	               
-	            	}
-	            }
-	        } catch (EOFException e) {
-	            System.out.println("Fin de fichero");
-	        } catch (IOException ex) {
-	            System.out.println(ex.getMessage());
-	        }
-	    }
-}
+	//metodo que permite leer el fichero
+	
