@@ -95,4 +95,10 @@ public class Producte implements Serializable {
 		return detallComande;
 	}
 
+	@Override
+	public String toString() {
+		return "Producte [nom=" + nom + ", stock=" + stock + "]";
+	}
+	
+
 }

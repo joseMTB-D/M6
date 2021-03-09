@@ -1,5 +1,6 @@
 package menu;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ import model.Client;
 import model.Comande;
 import model.DetallComande;
 import model.DetallComandePK;
+import model.Producte;
 
 public class Menu {
 	static Scanner scan = new Scanner(System.in);
@@ -93,11 +95,41 @@ public class Menu {
 	}
 
 	public static void tres() {
+		Query comand =entitymanager.createQuery("SELECT c FROM Producte c ");
+		List<Producte> stock =comand.getResultList();
+		for(Producte c :stock) {
+			List<DetallComande> comanda =c.getDetallComandes();
+			if(comanda.size()<=0) {
+				System.out.println(c);
+			}
 
+		}
+		
+		
+		
 	}
 
 	public static void cuatro() {
+		System.out.println("Indica el producto");
+		String producte=scan.nextLine();
+		int cda=0;
+		Query comand =entitymanager.createQuery("SELECT c FROM Producte c ");
+		List<Producte> stock =comand.getResultList();
+		for(Producte c :stock) {
+			List<DetallComande> comanda =c.getDetallComandes();
+			if((comanda.size()>0)&&(c.getNom().equals(producte))) {
+				cda+=1;
+			}
 
+		}
+		System.out.println("Numero de "+producte+" contades: "+cda);
+		
+		/*	if((comanda.size()!=0)) {
+				if((c.getNom().equals(producte))) {
+					cda+=1;
+
+				}
+			}*/
 	}
 
 	public static void cinco() {
