@@ -74,4 +74,9 @@ public class DetallComande implements Serializable {
 		this.producte = producte;
 	}
 
+	@Override
+	public String toString() {
+		return "DetallComande [id=" + id + ", descompte=" + descompte + ", quantitat=" + quantitat +  ", producte=" + producte + "]";
+	}
+
 }
